@@ -2,24 +2,25 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"../handler"
+	"../controller"
 	"../middleware/jwt"
 	"./rReadMe"
 	"./rMoive"
 	"./rPublic"
+	"gocl/db"
 )
 
-func InitRouter() *gin.Engine {
+func CreateRouter(database db.GoclDatabase) *gin.Engine {
 	router := gin.Default()
 
 	rAdmin := router.Group("/admin")
 	{
 		rAdmin.Use(jwtauth.JWTAuthRequired())
 		{
-			rAdmin.POST("/login", handler.LoginEndpoint)
-			rAdmin.POST("/submit", handler.LoginEndpoint)
+			rAdmin.POST("/login", controller.LoginEndpoint)
+			rAdmin.POST("/submit", controller.LoginEndpoint)
 		}
-		rAdmin.POST("/register", handler.AddUserEndpoint)
+		rAdmin.POST("/register", controller.AddUserEndpoint)
 	}
 
 	rApps := router.Group("/apps", jwtauth.JWTAuth())

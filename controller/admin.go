@@ -1,4 +1,4 @@
-package handler
+package controller
 
 import (
 	"github.com/gin-gonic/gin"
@@ -18,7 +18,7 @@ func LoginEndpoint(c *gin.Context) {
 		return
 	}
 
-	err, user := model.VerifyUser(username, password)
+	err, user := model(username, password)
 
 	if (err != nil) {
 		c.JSON(http.StatusOK, gin.H{

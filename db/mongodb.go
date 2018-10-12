@@ -2,27 +2,24 @@ package db
 
 import (
 	"gopkg.in/mgo.v2"
-	"../conf"
+	"gocl/config"
 )
 
-type AdminType struct {
+type GoclDatabase struct {
 	Users * mgo.Collection
 	Tokens * mgo.Collection
 }
 
-var AdminClient AdminType
+func CreateDataBase()(GoclDatabase, error) {
+	var database GoclDatabase
 
-func InitMongodb() bool {
-	mongoUrl := "mongodb://" + conf.DBConf.Url + ":" + conf.DBConf.Port
+	mongoUrl := "mongodb://" + config.DBConf.Url + ":" + config.DBConf.Port
 	session, err := mgo.Dial(mongoUrl)
 
-	if (err == nil) {
-		session.SetMode(mgo.Monotonic, true)
-		oauthDB := session.DB("go_admin")
-		AdminClient.Users = oauthDB.C("users")
-		AdminClient.Tokens = oauthDB.C("tokens")
-		return true
-	}
+	session.SetMode(mgo.Monotonic, true)
+	oauthDB := session.DB("go_admin")
+	database.Users = oauthDB.C("users")
+	database.Tokens = oauthDB.C("tokens")
 
-	return  false
+	return database, err
 }

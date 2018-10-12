@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 	"time"
-	"github.com/jwt-go"
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"../../conf"
+	"../../config"
 )
 
 func JWTAuth() gin.HandlerFunc {
@@ -45,7 +45,7 @@ var (
 	TokenNotValidYet error = errors.New("Token not active yet")
 	TokenMalformed error = errors.New("That's not even a token")
 	TokenInvalid error = errors.New("Couldn't handle this token:")
-	SignKey string = conf.GlobalConf.SignKey
+	SignKey string = config.GlobalConf.SignKey
 )
 type CustomClaims struct {
 	ID int `json:"id"`
