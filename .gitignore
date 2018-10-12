@@ -19,7 +19,3 @@ package-lock.json
 compilation-stats.json
 
 #golang
-bin/*
-pkg/*
-src/github.com
-src/gopkg.in
