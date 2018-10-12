@@ -1,12 +1,13 @@
 package main
 
 import (
-	"fmt"
-	"gocl/util"
+	"./router"
+	"./db"
 )
-
 func main() {
-	util.GoSum( 1, 2)
+	//连接数据库
+	db.InitMongodb()
 
-	fmt.Print("hello")
+	router := router.InitRouter()
+	router.Run()
 }

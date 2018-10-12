@@ -1,6 +1,19 @@
 {
 	"comment": "",
 	"ignore": "test",
-	"package": [],
+	"package": [
+		{
+			"checksumSHA1": "3D2xKBN5qdldeSGD/ncnULmUgHE=",
+			"path": "github.com/gin-gonic/gin",
+			"revision": "6ab50f944ca52bdd4d982d0bec454d94bf7b802a",
+			"revisionTime": "2018-10-11T23:31:31Z"
+		},
+		{
+			"checksumSHA1": "/xRHTpN8WOK4nmZjJ1f96ER1b/o=",
+			"path": "gopkg.in/mgo.v2/bson",
+			"revision": "9856a29383ce1c59f308dd1cf0363a79b5bef6b5",
+			"revisionTime": "2018-07-05T11:36:04Z"
+		}
+	],
 	"rootPath": "gocl"
 }
