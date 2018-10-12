@@ -19,3 +19,5 @@ package-lock.json
 compilation-stats.json
 
 #golang
+vendor/github.com
+vendor/gopkg.in
